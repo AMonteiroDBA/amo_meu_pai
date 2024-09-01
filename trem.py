@@ -1,42 +1,31 @@
 import os
 import time
 
-# Constants
-SCREEN_WIDTH = 80
-TRAIN_WIDTH = len("""
-   _______
-  /        \\
- /          \\
-|   _____  |
- _| |       |_
-  | |       |
-  | |_____  |
-  |_________|
-""")
+# Largura da tela
+largura_tela = 80
 
-# Function to clear the screen
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# Trenzinho em ASCII
+trenzinho = "=====_______>"
 
-# Function to print the train at a given position
-def print_train(position):
-    clear_screen()
-    print(" " * position + """
-   _______
-  /        \\
- /          \\
-|   _____  |
- _| |       |_
-  | |       |
-  | |_____  |
-  |_________|
-""")
+# Posição inicial do trenzinho
+posicao = 0
 
-# Simulate the train passing on the screen from left to right and back
-for i in range(2):
-    for position in range(SCREEN_WIDTH + TRAIN_WIDTH):
-        print_train(position)
-        time.sleep(0.1)
-    for position in range(SCREEN_WIDTH + TRAIN_WIDTH - 1, -1, -1):
-        print_train(position)
-        time.sleep(0.1)
+# Limpa a tela
+os.system("cls" if os.name == "nt" else "clear")
+
+while True:
+ # Limpa a tela
+ os.system("cls" if os.name == "nt" else "clear")
+
+ # Exibe o trenzinho na posição atual
+ print(" " * posicao + trenzinho)
+
+ # Atualiza a posição do trenzinho
+ posicao += 1
+
+ # Se o trenzinho ultrapassou a borda da tela, sai do loop
+ if posicao > largura_tela:
+    break
+
+ # Aguarda um pouco antes de atualizar a tela novamente
+ time.sleep(0.1)
